@@ -2,15 +2,19 @@ package Model.Entities;
 
 public class Conta {
     public Integer numero;
-    public String correntista;
+    public String titular;
     public Double saldo;
     public Double limiteSaque;
 
-    public Conta(Integer numero, String correntista, Double saldo, Double limiteSaque) {
+    public Conta(Integer numero, String titular, Double saldo, Double limiteSaque) {
         this.numero = numero;
-        this.correntista = correntista;
+        this.titular = titular;
         this.saldo = saldo;
         this.limiteSaque = limiteSaque;
+    }
+
+    public Conta(){
+
     }
 
     public Integer getNumero() {
@@ -21,28 +25,38 @@ public class Conta {
         this.numero = numero;
     }
 
-    public String getCorrentista() {
-        return correntista;
+    public String getTitular() {
+        return titular;
     }
 
-    public void setCorrentista(String correntista) {
-        this.correntista = correntista;
+    public void setTitular(String titular) {
+        this.titular = titular;
     }
 
     public Double getSaldo() {
         return saldo;
     }
 
-//    public void setSaldo(Double saldo) {
-//        this.saldo = saldo;
-//    }
+    public void setSaldo(Double saldo) {
+        this.saldo = saldo;
+    }
 
     public Double getLimiteSaque() {
         return limiteSaque;
     }
 
-//    public void setLimiteSaque(Double limiteSaque) {
-//        this.limiteSaque = limiteSaque;
-//    }
-    
+    public void setLimiteSaque(Double limiteSaque) {
+        this.limiteSaque = limiteSaque;
+    }
+
+    //Depositar
+    public void depositar(double quantidade){
+        saldo += quantidade;
+
+    }
+    //Saque
+    public void saque(double quantidade){
+        saldo -= quantidade;
+    }
+
 }

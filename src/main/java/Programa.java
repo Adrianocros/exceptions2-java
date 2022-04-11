@@ -24,11 +24,12 @@ public class Programa {
         System.out.print("Informe uma quantida para saque R$ ");
         double quantidade = sc.nextDouble();
 
-        if(quantidade > conta.getLimiteSaque()){
-            System.out.println("Erro no saque: Quantida para saque exedeu o limite estabelecido !");
-        }else if(quantidade > conta.saldo){
-            System.out.println("Erro no saque: Saldo insuficiente! ");
-        }else {
+
+        String error = conta.validacaoSaque(quantidade);
+
+        if(error != null){
+            System.out.println(error);
+        } else {
             conta.saque(quantidade);
             System.out.printf("Novo saldo %.2f%n", conta.getSaldo());
         }

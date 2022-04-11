@@ -59,4 +59,15 @@ public class Conta {
         saldo -= quantidade;
     }
 
+    //Delegando a logica para classe de negocio
+    public String validacaoSaque(double quantidade){
+        if(quantidade > getLimiteSaque()){
+            return  "Erro no saque: Quantida para saque exedeu o limite estabelecido !";
+        }
+        if(quantidade > saldo){
+            return "Erro no saque: Saldo insuficiente! " ;
+        }
+        return null;
+    }
+
 }

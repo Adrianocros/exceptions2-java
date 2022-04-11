@@ -1,5 +1,7 @@
 package Model.Entities;
 
+import Model.Exceptions.BusinessExceptions;
+
 public class Conta {
     public Integer numero;
     public String titular;
@@ -55,19 +57,19 @@ public class Conta {
 
     }
     //Saque
-    public void saque(double quantidade){
+    public void saque(double quantidade) throws BusinessExceptions{
+        validacaoSaque(quantidade);
         saldo -= quantidade;
     }
 
     //Delegando a logica para classe de negocio
-    public String validacaoSaque(double quantidade){
+    private void validacaoSaque(double quantidade) throws BusinessExceptions {
         if(quantidade > getLimiteSaque()){
-            return  "Erro no saque: Quantida para saque exedeu o limite estabelecido !";
+         throw new BusinessExceptions("Erro no saque: Quantida para saque exedeu o limite estabelecido !");
         }
         if(quantidade > saldo){
-            return "Erro no saque: Saldo insuficiente! " ;
+          throw new BusinessExceptions("Erro no saque: Saldo insuficiente! ");
         }
-        return null;
     }
 
 }
